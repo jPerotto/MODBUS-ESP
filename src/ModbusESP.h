@@ -3,7 +3,11 @@
     Copyright (C) 2015 André Sarmento Barbosa
 */
 #include "Modbus.h"
+#if defined(ARDUINO_ARCH_ESP8266)
 #include <ESP8266WiFi.h>
+#elif defined(ARDUINO_ARCH_ESP32)
+#include <WiFi.h>
+#else
 
 #ifndef MODBUSIP_ESP8266_H
 #define MODBUSIP_ESP8266_H
@@ -18,7 +22,7 @@ class ModbusESP : public Modbus {
   public:
     ModbusESP();
     void close();
-	void config(const char* ssid, const char* password, IPAddress ModbusIP_IP, IPAddress ModbusIP_Gateway, IPAddress ModbusIP_Subnet, uint16_t port);
+	void config(const char* ssid, const char* password, IPAddress ModbusIP_IP, IPAddress ModbusIP_Gateway, IPAddress ModbusIP_Subnet, uint16_t port = MODBUSIP_PORT);
     void task();
 };
 
