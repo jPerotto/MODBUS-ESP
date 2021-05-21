@@ -7,7 +7,7 @@
 #include <ESP8266WiFi.h>
 #elif defined(ARDUINO_ARCH_ESP32)
 #include <WiFi.h>
-#else
+#endif
 
 #ifndef MODBUSIP_ESP8266_H
 #define MODBUSIP_ESP8266_H
